@@ -3,7 +3,11 @@ import React, { Component } from "react";
 
 class Cities extends Component {
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <h1>CITIES</h1>
+      </div>
+    );
   }
 }
 export default Cities;

@@ -18,8 +18,8 @@ export default class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/cities" component={Cities} />
-            <Route exact path="/signUp" component={SignUp} />
-            <Route exact path="/logIn" component={LogIn} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/login" component={LogIn} />
           </Switch>
           <Footer />
         </div>

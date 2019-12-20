@@ -1,29 +1,44 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import circlearrow from "./circlearrow.png";
+
 class Landing extends Component {
   render() {
     return (
       <div>
-        <blockquote>
-          <p className="#80cbc4 teal lighten-3-text-lighten-2">
+        <div>
+          <p className="#e57373 red-text text-lighten-2">
             Find your perfect trip, designed by insiders who know and love their
             cities.
           </p>
-        </blockquote>
-        <blockquote>
+        </div>
+        <div className="#e57373 red-text text-lighten-2 flow-text">
           <p>Start browsing</p>
-        </blockquote>
-        <img src={circlearrow} alt="circlearrow" width="80" />
-        <blockquote>
+          <Link to="/cities">
+            <img
+              className="circlearrow"
+              src={circlearrow}
+              alt="circlearrow"
+              width="80"
+            />
+          </Link>
+        </div>
+        <div className="#e57373 red-text text-lighten-2">
           <p>Want to build your own MYitinerary?</p>
-        </blockquote>
+        </div>
         <div className="container">
           <div className="row">
             <div className="col s6">
-              <label>Log in</label>
+              <Link to="/login">
+                <label className="#e57373 red-text flow-text">Log in</label>
+              </Link>
             </div>
             <div className="col s6">
-              <label>Create Account</label>
+              <Link to="/signup">
+                <label className="#e57373 red-text flow-text">
+                  Create Account
+                </label>
+              </Link>
             </div>
           </div>
         </div>

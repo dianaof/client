@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 class LogIn extends Component {
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <h1>LOGIN</h1>
+      </div>
+    );
   }
 }
 export default LogIn;
