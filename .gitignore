@@ -2,6 +2,8 @@
 /V2-Sprint-1-Tuesday
 # dependencies
 /client/node_modules
+/server/node_modules
+/img
 /.pnp
 .pnp.js
 
