@@ -8,9 +8,6 @@ const citySchema = new mongoose.Schema({
   country: {
     type: String,
     required: true
-  },
-  img: {
-    type: String
   }
 });
 

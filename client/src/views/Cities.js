@@ -3,11 +3,18 @@ import React, { Component } from "react";
 
 class Cities extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      cityList: []
+      cityList: [],
+      search: ""
     };
   }
+  handleChange = e => {
+    this.setState({
+      search: e.target.value
+    });
+    //this.props.onChange(e.target.value);
+  };
   async componentDidMount() {
     const response = await fetch(`http://localhost:5000/cities/all`);
     const request = await response.json();
@@ -18,11 +25,26 @@ class Cities extends Component {
   }
 
   render() {
-    let { cityList } = this.state;
-    // let cityList = this.state.cityList;
+    // let { cityList } = this.state;
+    let filteredCityList = this.state.cityList;
+
+    filteredCityList = filteredCityList.filter(city => {
+      let cityName = city.name.toLowerCase();
+      return cityName.startsWith(this.state.search.toLowerCase());
+    });
+
     return (
       <div>
-        {cityList.map(city => {
+        <div>
+          <input
+            type="search"
+            placeholder="Search..."
+            value={this.state.search}
+            onChange={this.handleChange.bind(this)}
+          />
+        </div>
+
+        {filteredCityList.map(city => {
           return (
             <div key={city._id}>
               {city.name}, {city.country}
