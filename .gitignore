@@ -6,6 +6,7 @@
 /img
 /.pnp
 .pnp.js
+/keys
 
 # testing
 /coverage
