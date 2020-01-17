@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { fetchCityData } from "../store/actions/cityActions";
 // import M from "materialize-css";
@@ -59,33 +59,67 @@ import { fetchCityData } from "../store/actions/cityActions";
 // }
 // export default Cities;
 
-class CitiesList extends React.Component {
+class Cities extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: ""
+    };
+  }
+  handleChange = e => {
+    this.setState({
+      search: e.target.value
+    });
+  };
+
   componentDidMount() {
     this.props.fetchCityData();
   }
   render() {
-    const { error, cities } = this.props;
+    const { error, isLoading, cities } = this.props;
+
+    let filteredCityList = cities;
+    console.log(cities);
+    filteredCityList = filteredCityList.filter(city => {
+      let cityName = city.name.toLowerCase();
+      return cityName.startsWith(this.state.search.toLowerCase());
+    });
 
     if (error) {
       return <div>Error {error.message}</div>;
     }
+
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div>
-        {cities.map(city => {
-          return (
-            <div key={city._id}>
-              {city.name}, {city.country}
-            </div>
-          );
-        })}
+        <div>
+          <input
+            type="search"
+            placeholder="Search..."
+            value={this.state.search}
+            onChange={this.handleChange.bind(this)}
+          />
+        </div>
+        <div>
+          {filteredCityList.map(city => {
+            return (
+              <div key={city._id}>
+                {city.name}, {city.country}
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
 }
 const mapStateToProps = state => ({
-  cities: state.cities,
-
+  cities: state.cities.payload,
+  isLoading: state.cities.isLoading,
   error: state.cities.error
 });
 
-export default connect(mapStateToProps, { fetchCityData })(CitiesList);
+export default connect(mapStateToProps, { fetchCityData })(Cities);

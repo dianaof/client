@@ -6,17 +6,19 @@ export function fetchCityData() {
     });
     try {
       // Call the API
-      const result = await fetchCitiesData(`http://localhost:5000/cities/all`);
+      const result = await fetch(`http://localhost:5000/cities/all`);
+
+      const data = await result.json();
       // Update payload in reducer on success
       dispatch({
         type: FETCH_CITY_SUCCESS,
-        payload: result
+        payload: data
       });
     } catch (err) {
       // Update error in reducer on failure
       dispatch({
         type: FETCH_CITY_FAILURE,
-        error: err
+        payload: err
       });
     }
   };
