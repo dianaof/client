@@ -94,23 +94,26 @@ class Cities extends React.Component {
     }
 
     return (
-      <div>
-        <div>
-          <input
-            type="search"
-            placeholder="Search..."
-            value={this.state.search}
-            onChange={this.handleChange.bind(this)}
-          />
-        </div>
-        <div>
-          {filteredCityList.map(city => {
-            return (
-              <div key={city._id}>
-                {city.name}, {city.country}
-              </div>
-            );
-          })}
+      <div className="#e57373 red-text flow-text">
+        <div className="nav-wrapper">
+          <div className="input-field">
+            <input
+              className="label-icon"
+              type="search"
+              placeholder="Search..."
+              value={this.state.search}
+              onChange={this.handleChange.bind(this)}
+            />
+          </div>
+          <div>
+            {filteredCityList.map(city => {
+              return (
+                <div key={city._id}>
+                  {city.name}, {city.country}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
