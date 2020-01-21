@@ -28,3 +28,4 @@ mongoose
   .catch(err => console.log(err));
 
 app.use("/cities", require("./routes/cities"));
+app.use("/itineraries", require("./routes/itineraries"));

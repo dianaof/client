@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const itinerarySchema = new mongoose.Schema({
+  city_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
+  },
   title: {
     type: String,
     required: true
@@ -14,7 +18,7 @@ const itinerarySchema = new mongoose.Schema({
     required: true
   },
   duration: {
-    type: Number,
+    type: String,
     required: true
   },
   price: {
