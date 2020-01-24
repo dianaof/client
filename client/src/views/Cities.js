@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchCityData } from "../store/actions/cityActions";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import M from "materialize-css";
 
 // class Cities extends Component {
@@ -107,15 +107,15 @@ class Cities extends React.Component {
             />
           </div>
           <div>
-            {/* <Link to="/itineraries/all"> */}
             {filteredCityList.map(city => {
               return (
-                <div key={city._id}>
-                  {city.name}, {city.country}
-                </div>
+                <Link key={city._id} to={"/itineraries/" + city._id}>
+                  <div>
+                    {city.name}, {city.country}
+                  </div>
+                </Link>
               );
             })}
-            {/* </Link> */}
           </div>
         </div>
       </div>

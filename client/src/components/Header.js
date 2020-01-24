@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MYtineraryLogo from "./MYtineraryLogo.png";
+// import { slide as Menu } from "react-burger-menu";
 
 class Header extends Component {
   render() {

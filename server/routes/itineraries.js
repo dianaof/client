@@ -33,10 +33,10 @@ router.post("/", (req, res) => {
 });
 
 // find an itinerary by its Id
-router.get("/find/:id");
+router.get("/find/:_id");
 
 //this is how you implement a city route by specific city
-router.get("/city/:city_id", (req, res) => {
+router.get("/bycity/:city_id", (req, res) => {
   let cityIdParam = req.params.city_id;
   console.log(cityIdParam);
   itineraryModel
