@@ -110,8 +110,10 @@ class Cities extends React.Component {
             {filteredCityList.map(city => {
               return (
                 <Link key={city._id} to={"/itineraries/" + city._id}>
-                  <div>
-                    {city.name}, {city.country}
+                  <div className="#e57373 red-text text-lighten-2 collection">
+                    <div className="collection-item ">
+                      {city.name} ({city.country})
+                    </div>
                   </div>
                 </Link>
               );

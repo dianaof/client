@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 0.8rem;
 }
 
 code {
@@ -16,12 +17,12 @@ code {
   margin-top: 50px;
 }
 
-footer {
+/* footer {
   position: absolute;
   bottom: 15px;
   width: 100%;
   height: 2.5rem;
-}
+} */
 
 .circlearrow {
   margin-bottom: 20px;
@@ -47,10 +48,10 @@ footer {
 
 .bm-burger-button {
   position: fixed;
-  width: 36px;
+  width: 30px;
   height: 30px;
-  right: 36px;
-  top: 36px;
+  right: 30px;
+  top: 30px;
 }
 
 .bm-burger-bars {

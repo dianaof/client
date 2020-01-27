@@ -8,7 +8,7 @@ class Footer extends Component {
       <div>
         <footer>
           <Link to="/">
-            <button>
+            <button className="btn-floating #e57373 red lighten-2 waves-effect waves-light page-footer">
               <img src={houselogo} alt="houselogo" width="20" />
             </button>
           </Link>
