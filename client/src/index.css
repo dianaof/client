@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 code {
@@ -47,7 +47,7 @@ code {
 }
 
 .bm-burger-button {
-  position: fixed;
+  position: absolute;
   width: 30px;
   height: 30px;
   right: 30px;
@@ -68,12 +68,12 @@ code {
 }
 
 .bm-menu {
-  background: #e57373;
+  background: #cf9a9a;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
 
-/* Wrapper for item list */
-.bm-item-list {
-  color: #b8b7ad;
-}
+/* Wrapper for item list  */
+/* .bm-item-list {
+  color: #182bdb;
+} */

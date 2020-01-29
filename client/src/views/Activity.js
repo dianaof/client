@@ -1,15 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-class  extends Component {
-    render() {
-        return (
-            <div>
-                Activities
-                <input>
-                Your comment
-                </input>
-            </div>
-        )
-    }
+class Activity extends Component {
+  render() {
+    return (
+      <div>
+        Activity Activity Activity Activity
+        <div>
+          <p>Comments</p>
+          <input
+            className="input-field"
+            type="text"
+            placeholder="Your comment"
+          />
+        </div>
+      </div>
+    );
+  }
 }
-export default Activity
+export default Activity;

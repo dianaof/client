@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchItineraryData } from "../store/actions/itineraryActions";
-// import Activity from "./Activity";
+import Activity from "./Activity";
 
 class Itinerary extends React.Component {
   componentDidMount() {
@@ -38,23 +38,27 @@ class Itinerary extends React.Component {
                       </div>
                     </div>
                     <div className="col s10">
-                      <div>{itinerary.title}</div>
-                      <div className="card-content">
-                        <div className="col s3">{itinerary.rating}</div>
-                        <div className="col s6">{itinerary.duration}</div>
-                        <div className="col s3">{itinerary.price}</div>
+                      {itinerary.title}
+                      <div className=" card-content">
+                        <div className="col s4">{itinerary.rating}</div>
+                        <div className="col s4">{itinerary.duration}</div>
+                        <div className="col s2">{itinerary.price}</div>
                       </div>
                     </div>
-                    <div>{itinerary.hashtag}</div>
                   </div>
-
-                  <div className="card-action #ef9a9a red lighten-1">
-                    <div className=" #ffffff white-text">View All</div>
-                    {/* <Activity /> */}
+                  <div>{itinerary.hashtag}</div>
+                  <div className="collapsible" data-collapsible="accordion">
+                    <div className=" collapsible-header #ef9a9a red lighten-3  ">
+                      <p className="center-align flow-text #ffffff white-text">
+                        View All
+                      </p>
+                    </div>
+                    <div className="collapsible-body"></div>
                   </div>
                 </div>
               </div>
             </div>
+            <Activity />
           </div>
         </div>
       );

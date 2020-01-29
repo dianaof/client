@@ -26,7 +26,6 @@ export default class App extends React.Component {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/login" component={LogIn} />
             <Route path="/itineraries/:city_id" component={Itinerary} />
-            {/* <Route path={`${match.path}/:id`} component={Itinerary} /> */}
           </Switch>
           <Footer />
         </div>
