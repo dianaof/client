@@ -13,6 +13,7 @@ router.get("/all", (req, res) => {
 //post new activity
 router.post("/", (req, res) => {
   const newActivity = new activityModel({
+    city_id: req.body.city_id,
     itinerary_id: req.body.itinerary_id,
     img: req.body.img
   });
@@ -30,11 +31,12 @@ router.post("/", (req, res) => {
 router.get("/find/:city_id");
 
 //this is how you implement an activity route by specific itinerary
-router.get("/byitinerary/:itinerary_id", (req, res) => {
-  let itineraryIdParam = req.params.itinerary_id;
+// router.get("/byitinerary/:itinerary_id", (req, res) => {
+router.get("/byactivity/:city_id", (req, res) => {
+  let itineraryIdParam = req.params.city_id;
   console.log(itineraryIdParam);
   activityModel
-    .find({ itinerary_id: itineraryIdParam })
+    .find({ city_id: itineraryIdParam })
     .then(activities => {
       res.send(activities);
     })

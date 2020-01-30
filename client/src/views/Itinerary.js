@@ -1,15 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchItineraryData } from "../store/actions/itineraryActions";
+import { fetchActivityData } from "../store/actions/activityActions";
 import Activity from "./Activity";
 
 class Itinerary extends React.Component {
   componentDidMount() {
     this.props.fetchItineraryData(this.props.match.params.city_id);
+    this.props.fetchActivityData(this.props.match.params.city_id);
   }
   render() {
     console.log(this.props);
-    const { error, isLoading, itineraries } = this.props;
+    const { error, isLoading, itineraries, activities } = this.props;
 
     let itineraryList = itineraries;
     if (error) {
@@ -52,13 +54,17 @@ class Itinerary extends React.Component {
                       <p className="center-align flow-text #ffffff white-text">
                         View All
                       </p>
+                      <Activity
+                        activities={activities.filter(activity => {
+                          activity.itinerary_id === itinerary._id;
+                        })}
+                      />
                     </div>
                     <div className="collapsible-body"></div>
                   </div>
                 </div>
               </div>
             </div>
-            <Activity />
           </div>
         </div>
       );
@@ -70,7 +76,11 @@ class Itinerary extends React.Component {
 
 const mapStateToProps = state => ({
   itineraries: state.itineraries.payload,
+  activities: state.activities.payload,
   isLoading: state.itineraries.isLoading,
   error: state.itineraries.error
 });
-export default connect(mapStateToProps, { fetchItineraryData })(Itinerary);
+export default connect(mapStateToProps, {
+  fetchItineraryData,
+  fetchActivityData
+})(Itinerary);
