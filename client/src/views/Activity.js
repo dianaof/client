@@ -14,6 +14,7 @@ class Activity extends Component {
     const { error, isLoading, activities } = this.props;
 
     let activityList = activities;
+
     if (error) {
       return <div>Error{error.message}</div>;
     }
@@ -26,11 +27,13 @@ class Activity extends Component {
         <div key={activity._id}>
           <img src={activity.img} alt="" width="200" />
           <p>Comments</p>
-          {/* <input
-            className="input-field"
-            type="text"
-            placeholder="Your comment"
-          /> */}
+          {/* <form onSubmit={}>
+            <input
+              className="input-field"
+              type="text"
+              placeholder="Your comment" onChange={}
+            />
+          </form> */}
         </div>
       );
     }));

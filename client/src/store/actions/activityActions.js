@@ -25,11 +25,11 @@ export function fetchActivityData(city_id) {
     }
   };
 }
-export const fetchItinerarySuccess = activities => ({
+export const fetchActivitySuccess = activities => ({
   type: FETCH_ACTIVITY_SUCCESS,
   payload: { activities }
 });
-export const fetchItineraryFailure = error => ({
+export const fetchActivityFailure = error => ({
   type: FETCH_ACTIVITY_FAILURE,
   payload: { error }
 });

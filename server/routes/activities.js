@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const activityModel = require("../model/activityModel");
+
 router.get("/all", (req, res) => {
   activityModel
     .find({})

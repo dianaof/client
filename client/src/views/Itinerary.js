@@ -55,9 +55,9 @@ class Itinerary extends React.Component {
                         View All
                       </p>
                       <Activity
-                        activities={activities.filter(activity => {
-                          activity.itinerary_id === itinerary._id;
-                        })}
+                        activities={activities.filter(
+                          activity => activity.itinerary_id === itinerary._id
+                        )}
                       />
                     </div>
                     <div className="collapsible-body"></div>
