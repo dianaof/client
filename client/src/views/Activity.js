@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchActivityData } from "../store/actions/activityActions";
-// import Slider from "react-slick";
+// import { connect } from "react-redux";
+// import { fetchActivityData } from "../store/actions/activityActions";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class Activity extends Component {
   componentDidMount() {
@@ -12,6 +14,14 @@ class Activity extends Component {
   render() {
     console.log(this.props);
     const { error, isLoading, activities } = this.props;
+
+    let settings = {
+      dots: true,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
 
     let activityList = activities;
 
@@ -24,25 +34,25 @@ class Activity extends Component {
 
     return (activityList = activityList.map(activity => {
       return (
-        <div key={activity._id}>
-          <img src={activity.img} alt="" width="200" />
-          <p>Comments</p>
-          {/* <form onSubmit={}>
+        <Slider {...settings}>
+          <div key={activity._id}>
+            <div className="#ef9a9a red-text lighten-3">
+              {activity.title}
+              <img src={activity.img} alt="" width="200" />
+            </div>
+
+            {/* <form onSubmit={}>
             <input
               className="input-field"
               type="text"
               placeholder="Your comment" onChange={}
             />
           </form> */}
-        </div>
+          </div>
+        </Slider>
       );
     }));
   }
 }
 
-const mapStateToProps = state => ({
-  activities: state.activities.payload,
-  isLoading: state.activities.isLoading,
-  error: state.activities.error
-});
-export default connect(mapStateToProps, { fetchActivityData })(Activity);
+export default Activity;

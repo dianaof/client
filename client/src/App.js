@@ -10,8 +10,8 @@ import SignUp from "./views/SignUp";
 import LogIn from "./views/LogIn";
 import Itinerary from "./views/Itinerary";
 import "materialize-css/dist/css/materialize.min.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 
 export default class App extends React.Component {
   render() {

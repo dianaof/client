@@ -16,6 +16,7 @@ router.post("/", (req, res) => {
   const newActivity = new activityModel({
     city_id: req.body.city_id,
     itinerary_id: req.body.itinerary_id,
+    title: req.body.title,
     img: req.body.img
   });
   newActivity

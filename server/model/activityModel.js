@@ -9,6 +9,10 @@ const activitySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true
   },
+  title: {
+    type: String,
+    required: true
+  },
   img: {
     type: String,
     required: true
