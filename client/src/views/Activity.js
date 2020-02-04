@@ -2,8 +2,8 @@ import React, { Component } from "react";
 // import { connect } from "react-redux";
 // import { fetchActivityData } from "../store/actions/activityActions";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 
 class Activity extends Component {
   componentDidMount() {
@@ -34,21 +34,19 @@ class Activity extends Component {
 
     return (activityList = activityList.map(activity => {
       return (
-        <Slider {...settings}>
-          <div key={activity._id}>
-            <div className="#ef9a9a red-text lighten-3">
-              {activity.title}
-              <img src={activity.img} alt="" width="200" />
-            </div>
+        <Slider {...settings} key={activity._id}>
+          <div className="#ef9a9a red-text lighten-3">
+            {activity.title}
+            <img src={activity.img} alt="" width="200" />
+          </div>
 
-            {/* <form onSubmit={}>
+          {/* <form onSubmit={}>
             <input
               className="input-field"
               type="text"
               placeholder="Your comment" onChange={}
             />
           </form> */}
-          </div>
         </Slider>
       );
     }));

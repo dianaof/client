@@ -4,14 +4,18 @@ import { fetchItineraryData } from "../store/actions/itineraryActions";
 import { fetchActivityData } from "../store/actions/activityActions";
 import Activity from "./Activity";
 import M from "materialize-css";
+import "materialize-css/dist/css/materialize.min.css";
 
 class Itinerary extends React.Component {
   componentDidMount() {
     this.props.fetchItineraryData(this.props.match.params.city_id);
     this.props.fetchActivityData(this.props.match.params.city_id);
+  }
+  componentDidUpdate() {
+    var elems = document.querySelectorAll(".collapsible");
+    console.log(elems);
 
-    // var elems = document.querySelectorAll(".collapsible");
-    // M.Collapsible.init(elems, {});
+    M.Collapsible.init(elems, {});
   }
   render() {
     console.log(this.props);
@@ -28,7 +32,7 @@ class Itinerary extends React.Component {
 
     return (
       <ul className="collapsible">
-        {itineraryList.map(itinerary => {
+        {itineraryList.map((itinerary, i) => {
           return (
             <li key={itinerary._id} className="container ">
               {/* <p className="flow-text">Available MYtineraries</p> */}
@@ -62,7 +66,7 @@ class Itinerary extends React.Component {
               <div className="collapsible-header #ef9a9a red lighten-3  #ffffff white-text">
                 View All
               </div>
-              <div className="">
+              <div className="collapsible-body">
                 <Activity
                   activities={activities.filter(
                     activity => activity.itinerary_id === itinerary._id
