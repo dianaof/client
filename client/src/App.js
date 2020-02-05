@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import SideBar from "./components/SideBar";
 import Landing from "./views/Landing";
 import Cities from "./views/Cities";
-import SignUp from "./views/SignUp";
+import User from "./views/User";
 import LogIn from "./views/LogIn";
 import Itinerary from "./views/Itinerary";
 import "materialize-css/dist/css/materialize.min.css";
@@ -25,7 +25,7 @@ export default class App extends React.Component {
           <Switch id="page-wrap">
             <Route exact path="/" component={Landing} />
             <Route exact path="/cities" component={Cities} />
-            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/users" component={User} />
             <Route exact path="/login" component={LogIn} />
             <Route path="/itineraries/:city_id" component={Itinerary} />
           </Switch>

@@ -34,7 +34,7 @@ class Landing extends Component {
               </Link>
             </div>
             <div className="col s6">
-              <Link to="/signup">
+              <Link to="/users">
                 <label className="#e57373 red-text flow-text">
                   Create Account
                 </label>
