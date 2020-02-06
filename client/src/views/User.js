@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class User extends Component {
   constructor(props) {
@@ -20,9 +21,23 @@ class User extends Component {
   }
 
   handleSubmit(event) {
-    alert("Sign Up submitted: " + this.state.value);
+    // alert("Sign Up submitted: " + this.state.name, this.state.email);
     event.preventDefault();
+
+    axios
+      .post(`http://localhost:5000/users/`, {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+        picture: this.state.picture
+      })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      });
   }
+
+  // componentDidMount() {}
 
   render() {
     return (
@@ -42,7 +57,7 @@ class User extends Component {
           <div className="row">
             <div className="input-field col s12">
               <input
-                className="validate"
+                className=""
                 id="name"
                 type="text"
                 value={this.state.name}
@@ -54,7 +69,7 @@ class User extends Component {
           <div className="row">
             <div className="input-field col s12">
               <input
-                className="validate"
+                className=""
                 id="email"
                 type="email"
                 value={this.state.email}
@@ -66,7 +81,7 @@ class User extends Component {
           <div className="row">
             <div className="input-field col s12">
               <input
-                className="validate"
+                className=""
                 id="password"
                 type="password"
                 value={this.state.password}

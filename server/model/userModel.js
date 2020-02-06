@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   img: {
-    type: String,
-    required: true
+    type: String
   },
   user: {
     type: String,

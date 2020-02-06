@@ -17,7 +17,7 @@ export default props => {
         Login
       </a>
 
-      <a className="menu-item" href="/signup">
+      <a className="menu-item" href="/users">
         Sing Up
       </a>
     </Menu>
