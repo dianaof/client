@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const userModel = require("../model/userModel");
+const user = require("../model/userModel");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const { check, validationResult } = require("express-validator");
+const key = require("<path to your config file>");
 
 router.get("/all", (req, res) => {
-  userModel
+  user
     .find({})
     .then(files => {
       res.send(files);
@@ -17,14 +18,15 @@ router.get("/all", (req, res) => {
 router.post(
   "/",
   [
-    // username must be an email
     check("email").isEmail(),
-    // password must be at least 5 chars long
-    check("password").isLength({ min: 5 })
+
+    check("password")
+      .isLength({ min: 5 })
+      .withMessage("Must have at least 5 characters")
   ],
   (req, res) => {
     console.log(req.body);
-    // Finds the validation errors in this request and wraps them in an object with handy functions
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.json({ errors: errors.array() });
@@ -49,6 +51,25 @@ router.post(
           });
       });
     });
+  }
+);
+
+router.post(
+  "/login",
+  [check("email").isEmail(), check("password").isLength({ min: 5 })],
+  (req, res) => {
+    const newLogin = new userModel({
+      email: req.body.email,
+      password: req.body.password
+    });
+    // newLogin
+    //   .save()
+    //   .then(login => {
+    //     res.send(login);
+    //   })
+    //   .catch(err => {
+    //     res.status(500).send("Server error");
+    //   });
   }
 );
 

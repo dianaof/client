@@ -30,7 +30,7 @@ class Landing extends Component {
           <div className="row">
             <div className="col s6">
               <Link to="/login">
-                <label className="#e57373 red-text flow-text">Log in</label>
+                <label className="#e57373 red-text flow-text">Login</label>
               </Link>
             </div>
             <div className="col s6">

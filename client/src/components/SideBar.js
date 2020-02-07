@@ -18,7 +18,7 @@ export default props => {
       </a>
 
       <a className="menu-item" href="/users">
-        Sing Up
+        Sign Up
       </a>
     </Menu>
   );

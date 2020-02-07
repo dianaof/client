@@ -42,6 +42,7 @@ class User extends Component {
   render() {
     return (
       <div className="row">
+        <div className="#e57373 red-text flow-text">Create Account</div>
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="input-field col s12">
