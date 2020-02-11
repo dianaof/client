@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 // import { fetchActivityData } from "../store/actions/activityActions";
-import Slider from "react-slick";
+// import "../index.css";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
+// import M from "materialize-css";
+import Slider from "react-slick";
 
 class Activity extends Component {
   componentDidMount() {
-    //console.log(this.props);
-    //this.props.fetchActivityData(this.props.itinerary);
-    // No fetch
+    // var elems = document.querySelectorAll(".carousel");
+    // M.Carousel.init(elems);
   }
   render() {
     console.log(this.props);
@@ -20,7 +21,8 @@ class Activity extends Component {
       infinite: false,
       speed: 500,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      className: "slides"
     };
 
     let activityList = activities;
@@ -35,18 +37,10 @@ class Activity extends Component {
     return (activityList = activityList.map(activity => {
       return (
         <Slider {...settings} key={activity._id}>
-          <div className="#ef9a9a red-text lighten-3">
+          <div className="#ef9a9a red-text lighten-3 carousel-item">
             {activity.title}
             <img src={activity.img} alt="" width="200" />
           </div>
-
-          {/* <form onSubmit={}>
-            <input
-              className="input-field"
-              type="text"
-              placeholder="Your comment" onChange={}
-            />
-          </form> */}
         </Slider>
       );
     }));

@@ -4,7 +4,8 @@ const user = require("../model/userModel");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const { check, validationResult } = require("express-validator");
-const key = require("<path to your config file>");
+// const key = require("../keys");
+// const jwt = require("jsonwebtoken");
 
 router.get("/all", (req, res) => {
   user
@@ -35,7 +36,7 @@ router.post(
     bcrypt.genSalt(saltRounds, function(err, salt) {
       bcrypt.hash(req.body.password, salt, function(err, hash) {
         // Store hash in your password DB.
-        const newUser = new userModel({
+        const newUser = new user({
           img: req.body.picture,
           user: req.body.name,
           email: req.body.email,
@@ -51,25 +52,6 @@ router.post(
           });
       });
     });
-  }
-);
-
-router.post(
-  "/login",
-  [check("email").isEmail(), check("password").isLength({ min: 5 })],
-  (req, res) => {
-    const newLogin = new userModel({
-      email: req.body.email,
-      password: req.body.password
-    });
-    // newLogin
-    //   .save()
-    //   .then(login => {
-    //     res.send(login);
-    //   })
-    //   .catch(err => {
-    //     res.status(500).send("Server error");
-    //   });
   }
 );
 

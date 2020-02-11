@@ -6,16 +6,22 @@ class Login extends Component {
     this.state = {
       email: "",
       password: ""
-      // error: ""
+      // errorMail: "",
+      // errorPassword:""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  // handleChange=()=>{this.setState({ [event.target.id]: event.target.value });}
+
   handleChange(event) {
-    console.log(event.target.id, event.target.value);
+    // console.log(event.target.id, event.target.value);
     this.setState({ [event.target.id]: event.target.value });
   }
+
+  // handleSubmit=()=>{event.preventDefault()};
 
   handleSubmit(event) {
     event.preventDefault();

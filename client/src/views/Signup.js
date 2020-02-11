@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class User extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // value: "",
       picture: "",
       name: "",
       email: "",
@@ -21,7 +20,6 @@ class User extends Component {
   }
 
   handleSubmit(event) {
-    // alert("Sign Up submitted: " + this.state.name, this.state.email);
     event.preventDefault();
 
     axios
@@ -99,4 +97,4 @@ class User extends Component {
     );
   }
 }
-export default User;
+export default Signup;
