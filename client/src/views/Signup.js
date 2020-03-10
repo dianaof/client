@@ -21,6 +21,7 @@ class Signup extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log(this.state);
 
     axios
       .post(`http://localhost:5000/users/`, {
@@ -68,7 +69,7 @@ class Signup extends Component {
           <div className="row">
             <div className="input-field col s12">
               <input
-                className=""
+                // className=""
                 id="email"
                 type="email"
                 value={this.state.email}
@@ -89,7 +90,7 @@ class Signup extends Component {
               <label htmlFor="name">Password</label>
             </div>
           </div>
-          <div className="col 12">
+          <div className="input-field col 12">
             <input type="submit" value="Submit" />
           </div>
         </form>

@@ -1,4 +1,3 @@
-// import passport from "./passport";
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
@@ -6,8 +5,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require("./keys").mongoURI;
 const mongoose = require("mongoose");
-// const key = require("<path to your config file>");
-// const jwt = require("jsonwebtoken");
+const passport = require("passport");
+
+// passport configuration
+require("./passport");
+// passport middleware
+app.use(passport.initialize());
 
 app.use(bodyParser.json());
 app.use(
@@ -35,8 +38,3 @@ app.use("/itineraries", require("./routes/itineraries"));
 app.use("/activities", require("./routes/activities"));
 app.use("/users", require("./routes/users"));
 app.use("/login", require("./routes/login"));
-
-//passport middleware
-// app.use(passport.initialize());
-//passport configuration
-// require("./passport");

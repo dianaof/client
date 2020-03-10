@@ -6,11 +6,12 @@ const key = require("../keys");
 const bcrypt = require("bcrypt");
 
 router.post("/", (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
+  // const email = req.body.email;
+  // const password = req.body.password;
+  const { email, password } = req.body;
 
   User.findOne({ email }).then(user => {
-    if (!user) return res.status(400).json({ msg: "User doesn't exist" });
+    if (!user) return res.status(400).json({ msg: "User Does not exist" });
     bcrypt.compare(password, user.password, (err, succ) => {
       if (err) {
         console.log(res);
@@ -22,10 +23,8 @@ router.post("/", (req, res) => {
       if (succ) {
         const payload = {
           id: user.id
-          // name: user.name
-          // img: user.img
         };
-        const options = { expiresIn: 2592000 };
+        const options = { expiresIn: 3600 };
         jwt.sign(payload, key.secretOrKey, options, (err, token) => {
           if (err) {
             res.json({
@@ -41,10 +40,16 @@ router.post("/", (req, res) => {
         });
       }
     });
-    // .catch(err => console.log(err));
   });
 });
 
-router.get("/all", (req, res) => {});
+router.get("/", (req, res) => {
+  userModel
+    .findOne({ _id: req.user.id })
+    .then(user => {
+      res.json(user);
+    })
+    .catch(err => res.status(404).json({ error: "User does not exist!" }));
+});
 
 module.exports = router;

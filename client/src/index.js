@@ -8,11 +8,14 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./store/reducers/rootReducer";
+import { loadUser } from "./store/actions/authActions";
 
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+store.dispatch(loadUser());
 
 ReactDOM.render(
   <Provider store={store}>

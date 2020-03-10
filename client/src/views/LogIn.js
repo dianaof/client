@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class Login extends Component {
   constructor(props) {
@@ -6,8 +7,6 @@ class Login extends Component {
     this.state = {
       email: "",
       password: ""
-      // errorMail: "",
-      // errorPassword:""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,19 +24,8 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
-    //   axios
-    //     .post(`http://localhost:5000/login/`, {
-    //       email: this.state.email,
-    //       password: this.state.password
-    //     })
-    //     .then(res => {
-    //       console.log(res);
-    //       console.log(res.data);
-    //     });
+    console.log(this.state);
   }
-
-  // componentDidMount() {}
 
   render() {
     return (
@@ -68,12 +56,19 @@ class Login extends Component {
               <label htmlFor="name">Password</label>
             </div>
           </div>
-          <div className="col 12">
+          <div className="input-field col 12">
             <input type="submit" value="Submit" />
+            {/* <button className="btn #e57373 red">Login</button> */}
           </div>
         </form>
       </div>
     );
   }
 }
-export default Login;
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error
+});
+
+export default connect(mapStateToProps, {})(Login);

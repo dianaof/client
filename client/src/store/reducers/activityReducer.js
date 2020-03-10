@@ -4,7 +4,11 @@ import {
   FETCH_ACTIVITY_FAILURE
 } from "../actions/activityActions.js";
 
-const initialState = { payload: [], isLoading: false, error: null };
+const initialState = {
+  payload: [],
+  isLoading: false,
+  error: null
+};
 
 export default function activityReducer(state = initialState, action) {
   switch (action.type) {
