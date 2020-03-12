@@ -4,12 +4,12 @@ import { returnErrors } from "./errorActions";
 import {
   USER_LOADED,
   USER_LOADING,
-  AUTH_ERROR
-  // LOGIN_SUCCESS,
-  // LOGIN_FAIL,
+  AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
   // LOGOUT_SUCCESS,
-  // REGISTER_SUCCESS,
-  // REGISTER_FAIL
+  REGISTER_SUCCESS,
+  REGISTER_FAIL
 } from "./types";
 
 export const loadUser = () => (dispatch, getState) => {
@@ -29,9 +29,39 @@ export const loadUser = () => (dispatch, getState) => {
     });
 };
 
+//register
+
+export const register = ({ name, email, password, picture }) => dispatch => {
+  const config = {
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+  const body = JSON.stringify({ name, email, password, picture });
+  axios
+    .post("http://localhost:5000/users", body, config)
+    .then(res => dispatch({ type: REGISTER_SUCCESS, payload: res.data }))
+    .catch(err => {
+      dispatch(returnErrors(err.res.data, err.res.status, REGISTER_FAIL));
+    });
+};
+
 //login
 
-//register
+export const login = ({ email, password }) => dispatch => {
+  const config = {
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+  const body = JSON.stringify({ email, password });
+  axios
+    .post("http://localhost:5000/login", body, config)
+    .then(res => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
+    .catch(err => {
+      dispatch(returnErrors(err.res.data, err.res.status, LOGIN_FAIL));
+    });
+};
 
 export const tokenConfig = getState => {
   const token = getState().auth.token;
@@ -44,8 +74,7 @@ export const tokenConfig = getState => {
   console.log(token);
 
   if (token) {
-    config.headers["Authorization"] =
-      "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlM2MzNjk1YWQ2YThlMDQ3NDk3YzNmOCIsImlhdCI6MTU4MTUwNDkyNCwiZXhwIjoxNTg0MDk2OTI0fQ.kTkzp4Pt95OqEA8g7JwXS7qewe87IIB1_gI3ytnrjAs"; //dinamico localStorage
+    config.headers["Authorization"] = "token"; //dinamico localStorage
   }
   return config;
 };

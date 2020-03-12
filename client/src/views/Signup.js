@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
+
+import { connect } from "react-redux";
+import { register } from "../store/actions/authActions";
 
 class Signup extends Component {
   constructor(props) {
@@ -22,23 +24,16 @@ class Signup extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state);
-
-    axios
-      .post(`http://localhost:5000/users/`, {
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password,
-        picture: this.state.picture
-      })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      });
+    this.props.register({
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      picture: this.state.picture
+    });
   }
 
-  // componentDidMount() {}
-
   render() {
+    console.log(this.props);
     return (
       <div className="row">
         <div className="#e57373 red-text flow-text">Create Account</div>
@@ -98,4 +93,4 @@ class Signup extends Component {
     );
   }
 }
-export default Signup;
+export default connect(null, { register })(Signup);

@@ -5,6 +5,8 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 const saltRounds = 10;
 const { check, validationResult } = require("express-validator");
+const jwt = require("jsonwebtoken");
+const key = require("../keys");
 
 router.get("/all", (req, res) => {
   User.find({})
@@ -55,10 +57,24 @@ router.post(
           password: hash
         });
         console.log(newUser);
+        const options = { expiresIn: 3600 };
+        const payload = {
+          id: user.id
+        };
         newUser
           .save()
           .then(user => {
-            res.send(user);
+            jwt.sign(payload, key.secretOrKey, options, (err, token) => {
+              if (err) throw err;
+              res.json({
+                token,
+                user: {
+                  id: user.id,
+                  name: user.name,
+                  email: user.email
+                }
+              });
+            });
           })
           .catch(err => {
             res.status(500).send("Server Error");

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { login } from "../store/actions/authActions";
+import { clearErrors } from "../store/actions/errorActions";
 
 class Login extends Component {
   constructor(props) {
@@ -13,14 +15,10 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // handleChange=()=>{this.setState({ [event.target.id]: event.target.value });}
-
   handleChange(event) {
     // console.log(event.target.id, event.target.value);
     this.setState({ [event.target.id]: event.target.value });
   }
-
-  // handleSubmit=()=>{event.preventDefault()};
 
   handleSubmit(event) {
     event.preventDefault();
@@ -58,7 +56,6 @@ class Login extends Component {
           </div>
           <div className="input-field col 12">
             <input type="submit" value="Submit" />
-            {/* <button className="btn #e57373 red">Login</button> */}
           </div>
         </form>
       </div>
@@ -71,4 +68,4 @@ const mapStateToProps = state => ({
   error: state.error
 });
 
-export default connect(mapStateToProps, {})(Login);
+export default connect(mapStateToProps, { login, clearErrors })(Login);

@@ -6,8 +6,6 @@ const key = require("../keys");
 const bcrypt = require("bcrypt");
 
 router.post("/", (req, res) => {
-  // const email = req.body.email;
-  // const password = req.body.password;
   const { email, password } = req.body;
 
   User.findOne({ email }).then(user => {

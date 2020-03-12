@@ -19,9 +19,7 @@ export default class App extends React.Component {
       <BrowserRouter>
         <div className="App">
           <Header />
-          <SideBar
-          // pageWrapId={"page-wrap"} outerContainerId={"App"}
-          />
+          <SideBar />
           <Switch id="page-wrap">
             <Route exact path="/" component={Landing} />
             <Route exact path="/cities" component={Cities} />
