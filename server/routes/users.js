@@ -57,13 +57,13 @@ router.post(
           password: hash
         });
         console.log(newUser);
-        const options = { expiresIn: 3600 };
-        const payload = {
-          id: user.id
-        };
         newUser
           .save()
           .then(user => {
+            const options = { expiresIn: 3600 };
+            const payload = {
+              id: user.id
+            };
             jwt.sign(payload, key.secretOrKey, options, (err, token) => {
               if (err) throw err;
               res.json({

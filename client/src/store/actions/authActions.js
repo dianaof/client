@@ -7,7 +7,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  // LOGOUT_SUCCESS,
+  LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
   REGISTER_FAIL
 } from "./types";
@@ -61,6 +61,14 @@ export const login = ({ email, password }) => dispatch => {
     .catch(err => {
       dispatch(returnErrors(err.res.data, err.res.status, LOGIN_FAIL));
     });
+};
+
+//logout
+
+export const logout = () => {
+  return {
+    type: LOGOUT_SUCCESS
+  };
 };
 
 export const tokenConfig = getState => {

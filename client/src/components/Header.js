@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MYtineraryLogo from "./MYtineraryLogo.png";
-// import { slide as Menu } from "react-burger-menu";
 
+import Logout from "../views/Logout";
 class Header extends Component {
   render() {
     return (
@@ -13,6 +13,7 @@ class Header extends Component {
             alt="Logo"
             width="250"
           />
+          <Logout />
         </header>
       </div>
     );
