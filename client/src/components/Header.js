@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import MYtineraryLogo from "./MYtineraryLogo.png";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 
 class Header extends Component {
   render() {
     return (
       <div>
         <header>
-          <Navbar />
+          {/* <Navbar /> */}
           <img
             className="mytinerarylogo"
             src={MYtineraryLogo}

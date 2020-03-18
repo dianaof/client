@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 
 router.post("/", (req, res) => {
   const { email, password } = req.body;
+  console.log(email, password);
 
   User.findOne({ email }).then(user => {
     if (!user) return res.status(400).json({ msg: "User Does not exist" });

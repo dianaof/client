@@ -2,8 +2,8 @@ import React, { Component } from "react";
 // import { connect } from "react-redux";
 // import { fetchActivityData } from "../store/actions/activityActions";
 // import "../index.css";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 // import M from "materialize-css";
 import Slider from "react-slick";
 

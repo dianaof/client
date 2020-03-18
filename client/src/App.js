@@ -9,6 +9,7 @@ import Cities from "./views/Cities";
 import Signup from "./views/Signup";
 import Login from "./views/Login";
 import Itinerary from "./views/Itinerary";
+import Logout from "./views/Logout";
 import "materialize-css/dist/css/materialize.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -26,6 +27,7 @@ export default class App extends React.Component {
             <Route exact path="/users" component={Signup} />
             <Route exact path="/login" component={Login} />
             <Route path="/itineraries/:city_id" component={Itinerary} />
+            <Route path="/logout" component={Logout} />
           </Switch>
           <Footer />
         </div>

@@ -82,7 +82,7 @@ export const tokenConfig = getState => {
   console.log(token);
 
   if (token) {
-    config.headers["Authorization"] = "token"; //dinamico localStorage
+    config.headers["Authorization"] = token; //dinamico localStorage
   }
   return config;
 };
