@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "../store/actions/authActions";
 import { clearErrors } from "../store/actions/errorActions";
+import { Redirect } from "react-router";
 
 class Login extends Component {
   constructor(props) {
@@ -27,6 +28,12 @@ class Login extends Component {
   }
 
   render() {
+    const { isAuthenticated } = this.props.auth;
+    console.log(isAuthenticated);
+
+    if (isAuthenticated) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="row">
         <div className="#e57373 red-text flow-text">Login</div>
@@ -65,7 +72,8 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  // isAuthenticated: state.auth.isAuthenticated,
+  auth: state.auth,
   error: state.error
 });
 

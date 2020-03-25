@@ -2,14 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchItineraryData } from "../store/actions/itineraryActions";
 import { fetchActivityData } from "../store/actions/activityActions";
+// import{fetchComment} from "../store/actions/commentActions"
 import Activity from "./Activity";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
+import Comment from "../components/Comment";
 
 class Itinerary extends React.Component {
   componentDidMount() {
     this.props.fetchItineraryData(this.props.match.params.city_id);
     this.props.fetchActivityData(this.props.match.params.city_id);
+    //this.props.fetchComment(this.props.match.itinerary_id);
   }
   componentDidUpdate() {
     var elems = document.querySelectorAll(".collapsible");
@@ -19,7 +22,13 @@ class Itinerary extends React.Component {
   }
   render() {
     console.log(this.props);
-    const { error, isLoading, itineraries, activities } = this.props;
+    const {
+      error,
+      isLoading,
+      itineraries,
+      activities
+      //, comments
+    } = this.props;
 
     let itineraryList = itineraries;
     if (error) {
@@ -72,6 +81,7 @@ class Itinerary extends React.Component {
                     activity => activity.itinerary_id === itinerary._id
                   )}
                 />
+                <Comment itinerariID={itinerary._id} />
               </div>
             </li>
           );
@@ -88,8 +98,10 @@ const mapStateToProps = state => ({
   activities: state.activities.payload,
   isLoading: state.itineraries.isLoading,
   error: state.itineraries.error
+  //comments: state.comments.payload
 });
 export default connect(mapStateToProps, {
   fetchItineraryData,
   fetchActivityData
+  //fetchComment
 })(Itinerary);

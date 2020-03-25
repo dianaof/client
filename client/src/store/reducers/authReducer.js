@@ -49,6 +49,7 @@ export default function registerReducer(state = initialState, action) {
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
     case REGISTER_FAIL:
+      console.log("FAILS");
       localStorage.removeItem("token");
       return {
         ...state,

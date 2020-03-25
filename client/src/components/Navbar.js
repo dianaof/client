@@ -28,9 +28,7 @@ class Navbar extends Component {
             <strong>{user ? `Welcome ${user.name}` : ""}</strong>
           </span>
         </li>
-        <li>
-          <Logout />
-        </li>
+        <li>{/* <Logout /> */}</li>
       </Fragment>
     );
     const guestLinks = (

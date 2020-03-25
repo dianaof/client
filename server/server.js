@@ -38,3 +38,6 @@ app.use("/itineraries", require("./routes/itineraries"));
 app.use("/activities", require("./routes/activities"));
 app.use("/users", require("./routes/users"));
 app.use("/login", require("./routes/login"));
+//route comments
+
+app.use("/comments", require("./routes/comments"));

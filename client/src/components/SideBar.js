@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { slide as Menu } from "react-burger-menu";
 import { Link } from "react-router-dom";
 import { logout } from "../store/actions/authActions";
-import { Redirect } from "react-router";
+// import { Redirect } from "react-router";
 
 // import Signup from "../views/Signup";
 // import Logout from "../views/Logout";
@@ -29,9 +29,10 @@ class SideBar extends Component {
     const { isAuthenticated, user } = this.props.auth;
     console.log(isAuthenticated);
     //return
-    if (isAuthenticated) {
-      return <Redirect to="/" />;
-    }
+
+    // if (isAuthenticated) {
+    //   return <Redirect to="/" />;
+    // }
 
     return (
       <div>
@@ -41,12 +42,16 @@ class SideBar extends Component {
           onStateChange={state => this.handleStateChange(state)}
           onClick={this.showSettings}
         >
-          <Link to="/" className="menu-item" onClick={() => this.closeMenu()}>
+          <Link
+            to="/"
+            className="menu-item btn"
+            onClick={() => this.closeMenu()}
+          >
             Home
           </Link>
           <Link
             to="/cities"
-            className="menu-item"
+            className="menu-item btn"
             onClick={() => this.closeMenu()}
           >
             Cities
@@ -57,11 +62,11 @@ class SideBar extends Component {
               to="/"
               className="menu-item btn"
               onClick={() => {
-                this.props.logout();
+                // this.props.logout();
                 this.closeMenu();
               }}
             >
-              Logout{" "}
+              Logout
               <span>
                 <strong>{user ? `Welcome ${user.name}` : ""}</strong>
               </span>
@@ -77,7 +82,7 @@ class SideBar extends Component {
               </Link>,
               <Link
                 to="/users"
-                className="menu-item"
+                className="menu-item btn"
                 onClick={() => this.closeMenu()}
               >
                 Sign Up

@@ -8,3 +8,6 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 export const GET_ERRORS = "GET_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const POST_COMMENT = "POST_COMMENT";
+export const FETCH_POST = "FETCH_POST";
+export const COMMENT_LOADING = "COMMENT_LOADING";
