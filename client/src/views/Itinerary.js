@@ -48,7 +48,11 @@ class Itinerary extends React.Component {
               <div className="#37474f blue-grey-text darken-3">
                 <div className="card">
                   <div className="card-image">
-                    <img src={itinerary.img} alt="" width="100" height="133" />
+                    <img
+                      src={itinerary.img}
+                      alt=""
+                      //  width="100" height="133"
+                    />
                   </div>
                   <div>
                     <div className="card-content #e57373 red-text ">
@@ -81,7 +85,7 @@ class Itinerary extends React.Component {
                     activity => activity.itinerary_id === itinerary._id
                   )}
                 />
-                <Comment itinerariID={itinerary._id} />
+                <Comment itineraryID={itinerary._id} />
               </div>
             </li>
           );

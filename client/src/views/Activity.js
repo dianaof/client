@@ -37,9 +37,15 @@ class Activity extends Component {
     return (activityList = activityList.map(activity => {
       return (
         <Slider {...settings} key={activity._id}>
-          <div className="#ef9a9a red-text lighten-3 carousel-item">
-            {activity.title}
-            <img src={activity.img} alt="" width="200" />
+          <div className="card small">
+            <div className="#ef9a9a red-text lighten-3 carousel-item ">
+              {activity.title}
+              <img
+                src={activity.img}
+                alt=""
+                // width="200"
+              />
+            </div>
           </div>
         </Slider>
       );

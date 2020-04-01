@@ -24,7 +24,8 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log("GOOD");
+    console.log("GOOD", req.body);
+
     const newComment = new commentModel({
       username: req.body.username,
       comment: req.body.comment,
@@ -40,5 +41,9 @@ router.post(
       });
   }
 );
+
+router.post("/test", (req, res) => {
+  res.json({ msg: "GOOD" });
+});
 
 module.exports = router;

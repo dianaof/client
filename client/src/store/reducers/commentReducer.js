@@ -14,7 +14,14 @@ export default function commentReducer(state = initialState, action) {
         isLoading: true
       };
     case FETCH_POST:
-      return { ...state, payload: action.payload, isLoading: false };
+      console.log("FETCH_POST");
+      console.log(action.payload);
+      console.log(state.payload);
+      return {
+        ...state,
+        payload: state.payload.concat(action.payload),
+        isLoading: false
+      };
 
     case POST_COMMENT:
       return { ...state, payload: [action.payload, ...state.payload] };

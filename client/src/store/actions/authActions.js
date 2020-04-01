@@ -58,7 +58,11 @@ export const login = ({ email, password }) => dispatch => {
   const body = JSON.stringify({ email, password });
   axios
     .post("http://localhost:5000/login", body, config)
-    .then(res => dispatch({ type: LOGIN_SUCCESS, payload: res.data }))
+    .then(res => {
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      //traer al user
+      dispatch(loadUser());
+    })
     .catch(err => {
       dispatch(returnErrors(err.res.data, err.res.status, LOGIN_FAIL));
     });
@@ -83,7 +87,7 @@ export const tokenConfig = getState => {
   console.log(token);
 
   if (token) {
-    config.headers["Authorization"] = token; //dinamico localStorage
+    config.headers["Authorization"] = "Bearer " + token; //dinamico localStorage
   }
   return config;
 };

@@ -27,7 +27,6 @@ export default class App extends React.Component {
             <Route exact path="/users" component={Signup} />
             <Route exact path="/login" component={Login} />
             <Route path="/itineraries/:city_id" component={Itinerary} />
-            {/* <Route path="/logout" component={Logout} /> */}
           </Switch>
           <Footer />
         </div>

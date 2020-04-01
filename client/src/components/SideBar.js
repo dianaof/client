@@ -27,7 +27,7 @@ class SideBar extends Component {
   }
   render() {
     const { isAuthenticated, user } = this.props.auth;
-    console.log(isAuthenticated);
+    console.log(isAuthenticated, user);
     //return
 
     // if (isAuthenticated) {
@@ -62,14 +62,12 @@ class SideBar extends Component {
               to="/"
               className="menu-item btn"
               onClick={() => {
-                // this.props.logout();
+                this.props.logout();
                 this.closeMenu();
               }}
             >
               Logout
-              <span>
-                <strong>{user ? `Welcome ${user.name}` : ""}</strong>
-              </span>
+              <span>{user ? ` ${user.name}` : ""}</span>
             </Link>
           ) : (
             [

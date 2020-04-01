@@ -40,4 +40,13 @@ app.use("/users", require("./routes/users"));
 app.use("/login", require("./routes/login"));
 //route comments
 
-app.use("/comments", require("./routes/comments"));
+app.use(
+  "/comments",
+  passport.authenticate("jwt", { session: false }),
+  require("./routes/comments")
+);
+
+//endpoint ruta comments sin auth
+app.use("/getComments", require("./routes/getComments"));
+
+// app.use("/favourites", require("./routes/favourites"));
